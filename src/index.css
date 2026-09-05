@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-ethiopic: 'Noto Sans Ethiopic', 'Abyssinica SIL', 'Nyala', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-latin: 'Plus Jakarta Sans', 'Noto Sans Ethiopic', system-ui, -apple-system, sans-serif;
+    --color-bg: #F4F1EA;
+    --color-sidebar: #EBE7DF;
+    --color-border: #D9D4C7;
+    --color-text: #2D2A26;
+    --color-accent: #8B7E66;
+    --color-accent-hover: #7A6E57;
+  }
+
+  .dark {
+    --color-bg: #1F1D1A;
+    --color-sidebar: #2B2723;
+    --color-border: #423D37;
+    --color-text: #F4F1EA;
+    --color-accent: #9E9177;
+    --color-accent-hover: #B0A48A;
+  }
+
+  body {
+    font-family: var(--font-ethiopic);
+    line-height: 1.75;
+    letter-spacing: 0.01em;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+  }
+}
+
+/* Fidel typography helpers */
+.font-fidel {
+  font-family: var(--font-ethiopic);
+  line-height: 1.8;
+  word-spacing: 0.04em;
+}
+
+.font-sans-ui {
+  font-family: var(--font-latin);
+}
+
+/* Natural Tones Quiet breathing dot animation */
+@keyframes breathingDot {
+  0%, 100% {
+    transform: scale(0.85);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.95;
+  }
+}
+
+.animate-breathing-dot-1 {
+  animation: breathingDot 1.6s ease-in-out infinite;
+}
+
+.animate-breathing-dot-2 {
+  animation: breathingDot 1.6s ease-in-out infinite 0.25s;
+}
+
+.animate-breathing-dot-3 {
+  animation: breathingDot 1.6s ease-in-out infinite 0.5s;
+}
+
+/* Subtle Natural Tones scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D9D4C7;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8B7E66;
+}
+
+/* ==========================================================================
+   Mobile-First Layout & Component Styles
+   ========================================================================== */
+
+/* Base: mobile-first. Everything below applies to phones by default. */
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  touch-action: manipulation;
+}
+
+/* Prevent iOS Safari 16px zoom-in glitch on mobile inputs */
+@media (max-width: 640px) {
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+}
+
+/* Hide scrollbars for slick mobile look while keeping scrollable */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Mobile Safe Area helpers */
+.pb-safe {
+  padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+}
+.pt-safe {
+  padding-top: max(0.5rem, env(safe-area-inset-top));
+}
+
